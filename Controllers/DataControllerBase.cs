@@ -7,11 +7,11 @@ using RestSharp;
 
 namespace Soccer.Controllers
 {
-    public class BodyApi
+    public class ParamApi
     {
         public NameValueCollection Qry { get; set; }
         public NameValueCollection Rst { get; set; }
-        public BodyApi()
+        public ParamApi()
         {
             Qry = new NameValueCollection();
             Rst = new NameValueCollection();
@@ -29,7 +29,7 @@ namespace Soccer.Controllers
         livescoresNow,
         fixturesByIdLive,
         seasonTeams,
-        seasonMatches,
+        seasonResults,
         seasonSquad,
         seasonTopPlayers,
         fixturesById,
@@ -72,13 +72,13 @@ namespace Soccer.Controllers
             _iconfiguration = iconfiguration;                     
         }
 
-        public object Callback(ApiRef apiref, BodyApi bodyApi)
+        public object Callback(ApiRef apiref, ParamApi ParamApi)
         {
-            foreach (var item in bodyApi.Qry.AllKeys)
+            foreach (var item in ParamApi.Qry.AllKeys)
             {
                 if(item.Equals("api_token"))
                     {
-                        string[] value = bodyApi.Qry.GetValues(item);
+                        string[] value = ParamApi.Qry.GetValues(item);
                         if (value == null)
                             return StatusCode(Microsoft.AspNetCore.Http.StatusCodes.Status403Forbidden, error_api_token);
                         if (value[0].Equals(""))
@@ -87,8 +87,8 @@ namespace Soccer.Controllers
                     }
             }
             
-            string querys = ToQueryString(bodyApi.Qry);
-            string path = ToParamRstString(bodyApi.Rst, _iconfiguration.GetSection(apiref.ToString()).Value);
+            string querys = ToQueryString(ParamApi.Qry);
+            string path = ToParamRstString(ParamApi.Rst, _iconfiguration.GetSection(apiref.ToString()).Value);
             string uri =  _iconfiguration.GetSection("URL_BASE").Value +
                           path +
                           querys;
