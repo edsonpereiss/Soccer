@@ -27,6 +27,7 @@ namespace Soccer
         public void ConfigureServices(IServiceCollection services)
         {
 
+            services.AddSingleton<IConfiguration>(Configuration);
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
