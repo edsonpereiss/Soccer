@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using System;
-namespace Soccer.Controllers
+namespace Soccer.Extensions
 {
-public class Config
+    public class Config
     {
         private readonly IHttpContextAccessor HttpContextAccessor;
 
