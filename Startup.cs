@@ -11,6 +11,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Soccer.Data;
+using Soccer.Repositories;
 
 namespace Soccer
 {
@@ -26,7 +28,10 @@ namespace Soccer
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            services.AddScoped<ISoccerContext,SoccerContext>();
+            services.AddScoped<IContentRepository,ContentRepository>();
+            
+            
             services.AddSingleton<IConfiguration>(Configuration);
             services.AddControllers();
             services.AddSwaggerGen(c =>
