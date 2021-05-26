@@ -28,3 +28,15 @@
 /home/ereis/projetos/Soccer/Soccer/obj/Debug/net5.0/Soccer.pdb
 /home/ereis/projetos/Soccer/Soccer/obj/Debug/net5.0/Soccer.genruntimeconfig.cache
 /home/ereis/projetos/Soccer/Soccer/bin/Debug/net5.0/RestSharp.dll
+/home/ereis/projetos/Soccer/Soccer/bin/Debug/net5.0/DnsClient.dll
+/home/ereis/projetos/Soccer/Soccer/bin/Debug/net5.0/MongoDB.Bson.dll
+/home/ereis/projetos/Soccer/Soccer/bin/Debug/net5.0/MongoDB.Driver.dll
+/home/ereis/projetos/Soccer/Soccer/bin/Debug/net5.0/MongoDB.Driver.Core.dll
+/home/ereis/projetos/Soccer/Soccer/bin/Debug/net5.0/MongoDB.Libmongocrypt.dll
+/home/ereis/projetos/Soccer/Soccer/bin/Debug/net5.0/SharpCompress.dll
+/home/ereis/projetos/Soccer/Soccer/bin/Debug/net5.0/runtimes/win/native/libzstd.dll
+/home/ereis/projetos/Soccer/Soccer/bin/Debug/net5.0/runtimes/win/native/snappy32.dll
+/home/ereis/projetos/Soccer/Soccer/bin/Debug/net5.0/runtimes/win/native/snappy64.dll
+/home/ereis/projetos/Soccer/Soccer/bin/Debug/net5.0/runtimes/linux/native/libmongocrypt.so
+/home/ereis/projetos/Soccer/Soccer/bin/Debug/net5.0/runtimes/osx/native/libmongocrypt.dylib
+/home/ereis/projetos/Soccer/Soccer/bin/Debug/net5.0/runtimes/win/native/mongocrypt.dll

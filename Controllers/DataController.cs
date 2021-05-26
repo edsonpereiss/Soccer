@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using RestSharp;
@@ -6,7 +8,7 @@ using RestSharp;
 namespace Soccer.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/v1.0")]
     public class DataController : ControllerBase
     {
 
@@ -19,7 +21,10 @@ namespace Soccer.Controllers
         }
 
         [HttpGet]
-        [Route("v.1/api/countries")]
+        [Route("countries")]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        [ProducesResponseType(typeof(object), StatusCodes.Status200OK)]
         public object countries(string api_token  = null, string include = null)
         {
             ParamApi paramApi = new ParamApi();
@@ -32,7 +37,10 @@ namespace Soccer.Controllers
         }
 
         [HttpGet]
-        [Route("v.1/api/leagues")]
+        [Route("leagues")]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        [ProducesResponseType(typeof(object), StatusCodes.Status200OK)]
         public object leagues(string api_token  = null, string include = null)
         {
             ParamApi paramApi = new ParamApi();
@@ -45,7 +53,10 @@ namespace Soccer.Controllers
         }
 
         [HttpGet]
-        [Route("v.1/api/leagues/{id}")]
+        [Route("leagues/{id}")]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        [ProducesResponseType(typeof(object), StatusCodes.Status200OK)]
         public object leagueById(long id, string api_token  = null)
         {
             ParamApi paramApi = new ParamApi();
@@ -57,7 +68,10 @@ namespace Soccer.Controllers
         }
 
         [HttpGet]
-        [Route("v.1/api/fixtures/{id}")]
+        [Route("fixtures/{id}")]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        [ProducesResponseType(typeof(object), StatusCodes.Status200OK)]
         public object fixturesForDate(long id, string api_token  = null, string include = null)
         {
             ParamApi paramApi = new ParamApi();
@@ -72,7 +86,10 @@ namespace Soccer.Controllers
         }
 
         [HttpGet]
-        [Route("v.1/api/fixtures/date/{date}")]
+        [Route("fixtures/date/{date}")]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        [ProducesResponseType(typeof(object), StatusCodes.Status200OK)]
         public object fixturesForDate(string date, string api_token  = null, string include = null)
         {
             ParamApi paramApi = new ParamApi();
@@ -87,7 +104,10 @@ namespace Soccer.Controllers
         }
 
         [HttpGet]
-        [Route("v.1/api/fixtures/between/{from}/{to}")]
+        [Route("fixtures/between/{from}/{to}")]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        [ProducesResponseType(typeof(object), StatusCodes.Status200OK)]
         public object fixturesBetweenDates(string from, string to, string api_token  = null, string include = null)
         {
             ParamApi paramApi = new ParamApi();
@@ -103,7 +123,10 @@ namespace Soccer.Controllers
         }
 
         [HttpGet]
-        [Route("v.1/api/fixtures/multi/{ids}")]
+        [Route("fixtures/multi/{ids}")]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        [ProducesResponseType(typeof(object), StatusCodes.Status200OK)]
         public object particularFixtures(string ids, string api_token  = null, string include = null)
         {
             ParamApi paramApi = new ParamApi();
@@ -118,7 +141,10 @@ namespace Soccer.Controllers
         }
 
         [HttpGet]
-        [Route("v.1/api/commentaries/fixture/{id}")]
+        [Route("commentaries/fixture/{id}")]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        [ProducesResponseType(typeof(object), StatusCodes.Status200OK)]
         public object commentary(long id, string api_token  = null)
         {
             ParamApi paramApi = new ParamApi();
@@ -130,7 +156,10 @@ namespace Soccer.Controllers
         }
 
         [HttpGet]
-        [Route("v.1/api/players/{id}")]
+        [Route("players/{id}")]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        [ProducesResponseType(typeof(object), StatusCodes.Status200OK)]
         public object player(long id, string api_token  = null)
         {
             ParamApi paramApi = new ParamApi();
@@ -142,7 +171,10 @@ namespace Soccer.Controllers
         }
 
         [HttpGet]
-        [Route("v.1/api/head2head/{team1id}/{team2id}")]
+        [Route("head2head/{team1id}/{team2id}")]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        [ProducesResponseType(typeof(object), StatusCodes.Status200OK)]
         public object h2h(long team1id, long team2id, string api_token  = null, string include = null)
         {
             ParamApi paramApi = new ParamApi();
@@ -158,7 +190,10 @@ namespace Soccer.Controllers
         }
 
         [HttpGet]
-        [Route("v.1/api/teams/{id}")]
+        [Route("teams/{id}")]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        [ProducesResponseType(typeof(object), StatusCodes.Status200OK)]
         public object teamById(long id, string api_token  = null, string include = null)
         {
             ParamApi paramApi = new ParamApi();
@@ -173,7 +208,10 @@ namespace Soccer.Controllers
         }
 
         [HttpGet]
-        [Route("v.1/api/livescores")]
+        [Route("livescores")]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        [ProducesResponseType(typeof(object), StatusCodes.Status200OK)]
         public object livescores(string api_token  = null, string include = null)
         {
             ParamApi paramApi = new ParamApi();
@@ -186,7 +224,10 @@ namespace Soccer.Controllers
         }
 
         [HttpGet]
-        [Route("v.1/api/livescores/now")]
+        [Route("livescores/now")]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        [ProducesResponseType(typeof(object), StatusCodes.Status200OK)]
         public object livescoresNow(string api_token  = null, string include = null)
         {
             ParamApi paramApi = new ParamApi();
@@ -199,7 +240,10 @@ namespace Soccer.Controllers
         }
 
         [HttpGet]
-        [Route("v.1/api/teams/season/{seasonId}")]
+        [Route("teams/season/{seasonId}")]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        [ProducesResponseType(typeof(object), StatusCodes.Status200OK)]
         public object seasonTeams(long seasonId, string api_token  = null, string include = null)
         {
             ParamApi paramApi = new ParamApi();
@@ -214,7 +258,10 @@ namespace Soccer.Controllers
         }
 
         [HttpGet]
-        [Route("v.1/api/seasons/{id}")]
+        [Route("seasons/{id}")]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        [ProducesResponseType(typeof(object), StatusCodes.Status200OK)]
         public object seasonResults(long id, string api_token  = null, string include = null)
         {
             ParamApi paramApi = new ParamApi();
@@ -229,7 +276,10 @@ namespace Soccer.Controllers
         }
 
         [HttpGet]
-        [Route("v.1/api/squad/season/{seasonId}/team/{teamId}")]
+        [Route("squad/season/{seasonId}/team/{teamId}")]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        [ProducesResponseType(typeof(object), StatusCodes.Status200OK)]
         public object seasonSquad(long seasonId, long teamId, string api_token  = null, string include = null)
         {
             ParamApi paramApi = new ParamApi();
@@ -245,7 +295,10 @@ namespace Soccer.Controllers
         }
 
         [HttpGet]
-        [Route("v.1/api/topscorers/season/{seasonId}")]
+        [Route("topscorers/season/{seasonId}")]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        [ProducesResponseType(typeof(object), StatusCodes.Status200OK)]
         public object seasonTopPlayers(long seasonId,  string api_token  = null, string include = null)
         {
             ParamApi paramApi = new ParamApi();
@@ -260,8 +313,11 @@ namespace Soccer.Controllers
         }
 
         [HttpGet]
-        [Route("v.1/api/standings/season/{id}")]
-        public object standings(long id,  string api_token  = null, string include = null)
+        [Route("standings/season/{id}")]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        [ProducesResponseType(typeof(object), StatusCodes.Status200OK)]
+        public  object standings(long id,  string api_token  = null, string include = null)
         {
             ParamApi paramApi = new ParamApi();
             paramApi.Qry.Add("api_token", api_token);
