@@ -1,0 +1,17 @@
+# Please refer https://aka.ms/HTTPSinContainer on how to setup an https developer certificate for your ASP .NET Core service.
+
+version: '3.4'
+
+services:
+  soccerDb:
+    image: mongo
+
+  soccerApi:
+    image: aspnetcore5
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+
+volumes: 
+  mongo_data:
+      

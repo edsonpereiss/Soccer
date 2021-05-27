@@ -1,0 +1,22 @@
+version: '3.4'
+
+services:
+  soccerDb:
+    container_name: soccerDb
+    restart: always
+    ports: 
+        - "27017:27017"
+    volumes: 
+        - mongo_data:/data/db    
+
+
+  soccerApi:
+    container_name: soccerApi
+    environment:
+        - ASPNETCORE_ENVIRONMENT=Development
+        - "DatabaseSettings:ConnectionString=mongodb://soccerDb:27017"
+    depends_on: 
+      - soccerDb
+    ports:
+      - 5000:5000
+
