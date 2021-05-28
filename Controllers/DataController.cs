@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using RestSharp;
+using Soccer.Repositories;
 
 namespace Soccer.Controllers
 {
@@ -13,10 +14,13 @@ namespace Soccer.Controllers
     {
 
         private readonly ILogger<DataController> _logger;
+        private readonly IContentRepository _repository;
+
         protected readonly string error_api_token = "{ \"error\": { \"message\": \"Unauthenticated\", \"code\": 403 }}";
 
-        public DataController(ILogger<DataController> logger, IConfiguration iconfiguration)
+        public DataController(ILogger<DataController> logger, IConfiguration iconfiguration, IContentRepository repository)
         {
+            _repository = repository;
             _logger = logger;
         }
 
@@ -345,7 +349,7 @@ namespace Soccer.Controllers
                     }
             }
             
-            IRestResponse response = DataCallback.Callback(apiref, ParamApi);
+            IRestResponse response = DataCallback.Callback(apiref, ParamApi, _repository);
             
             if (!response.IsSuccessful)            
                 return StatusCode(Microsoft.AspNetCore.Http.StatusCodes.Status403Forbidden,response.Content);

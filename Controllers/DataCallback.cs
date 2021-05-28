@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using RestSharp;
 using Soccer.Extensions;
+using Soccer.Repositories;
 
 namespace Soccer.Controllers
 {
@@ -44,14 +45,7 @@ namespace Soccer.Controllers
 
     public class DataCallback  
     {
-        //protected IConfiguration _iconfiguration;
-
-        public DataCallback(/*IConfiguration iconfiguration*/)
-        {
-            //_iconfiguration = iconfiguration;                   
-        }
-
-        public static IRestResponse Callback(ApiRef apiref, ParamApi ParamApi)
+        public static IRestResponse Callback(ApiRef apiref, ParamApi ParamApi, IContentRepository repository)
         {
             string querys = ToQueryString(ParamApi.Qry);
             string path = ToParamRstString(ParamApi.Rst, Config.GetConfig(apiref.ToString(), false));
@@ -59,6 +53,8 @@ namespace Soccer.Controllers
                           path +
                           querys;
             
+            repository.CreateContent(new Entities.Content { Name = uri, jsonFile ="", LastUpdate = System.DateTime.Now});
+
             var client = new RestClient(uri);
             client.Timeout = -1;
             var request = new RestRequest(Method.GET);

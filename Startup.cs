@@ -30,8 +30,6 @@ namespace Soccer
         {
             services.AddScoped<ISoccerContext,SoccerContext>();
             services.AddScoped<IContentRepository,ContentRepository>();
-            
-            
             services.AddSingleton<IConfiguration>(Configuration);
             services.AddControllers();
             services.AddSwaggerGen(c =>
