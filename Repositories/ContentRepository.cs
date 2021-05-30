@@ -33,10 +33,16 @@ namespace Soccer.Repositories
             return await _context.Contents.Find(p => p.Id == id).FirstOrDefaultAsync();
         }
 
-        public async Task<IEnumerable<Content>> GetContentByName(string name)
+        public async Task<IEnumerable<Content>> GetContentsByName(string name)
         {
             FilterDefinition<Content> filter = Builders<Content>.Filter.Eq(p => p.Name, name);
             return await _context.Contents.Find(filter).ToListAsync();
+        }
+
+        public async Task<Content> GetContentByName(string name)
+        {
+            FilterDefinition<Content> filter = Builders<Content>.Filter.Eq(p => p.Name, name);
+            return await _context.Contents.Find(filter).FirstOrDefaultAsync();
         }
 
         public async Task<IEnumerable<Content>> GetContents()

@@ -349,12 +349,20 @@ namespace Soccer.Controllers
                     }
             }
             
-            IRestResponse response = DataCallback.Callback(apiref, ParamApi, _repository);
+            IRestResponse response = DataCallback.CallBack(apiref, ParamApi, _repository);
             
-            if (!response.IsSuccessful)            
-                return StatusCode(Microsoft.AspNetCore.Http.StatusCodes.Status403Forbidden,response.Content);
+            if (!response.IsSuccessful)
+            {
+                if (response.StatusCode.Equals(System.Net.HttpStatusCode.OK))
+                    return StatusCode(Microsoft.AspNetCore.Http.StatusCodes.Status200OK,response.Content);
+                else
+                    return StatusCode(Microsoft.AspNetCore.Http.StatusCodes.Status403Forbidden,response.Content);
+
+            }            
             else
+            {
                return StatusCode(Microsoft.AspNetCore.Http.StatusCodes.Status200OK,response.Content);
+            }
         }
     }
 }
