@@ -13,7 +13,7 @@ services:
     container_name: soccerApi
     environment:
         - ASPNETCORE_ENVIRONMENT=Development
-        - "DatabaseSettings:ConnectionString=mongodb://soccerDb:20717"
+        - "DatabaseSettings:ConnectionString=mongodb://soccerDb:26717"
     depends_on: 
       - soccerDb
     ports:
