@@ -1,21 +1,43 @@
-# Soccer 
-#
+# Iniciar do Zero
 
-# Security Mongo
-# docker ps
-# docker exec -it soccerDb mongo
+# // comments command docker compose
+# command: [--auth]
 
-# show dbs
+# docker stop $(docker ps -aq)
+# docker system prune --all --force --volumes
+# docker-compose -f docker-compose.yml -f docker-compose.override.yml up -d
+# docker exec -it soccerDb bash
+
+# mongo
 
 # use admin
-
 # db.createUser(
-# {
-# user: "root",
-# pwd: passwordPrompt(),
-# roles: [ { role: "userAdminAnyDatabase", db: "admin" }, "readWriteAnyDatabase" ]
-# }
+#   {
+#     user: "root",
+#     pwd: "Mongo2021", // or cleartext password
+#     roles: [ { role: "userAdminAnyDatabase", db: "admin" }, "readWriteAnyDatabase" ]
+#   }
 # )
 
-# exit
-# docker exec -it soccerDb bash
+
+# use soccerDb
+
+# db.createUser(
+#   {
+#     user: "soccer",
+#     pwd:  "Mongo2021",   // or cleartext password
+#     roles: [ { role: "readWrite", db: "soccerDb" } ]
+#   }
+# )
+
+# db.adminCommand( { shutdown: 1 } )
+
+# docker stop soccerDb
+
+# // Add command docker compose
+# command: [--auth]
+
+# docker-compose -f docker-compose.yml -f docker-compose.override.yml up -d
+
+# mongodb://soccer:Mongo2021@localhost:27017
+

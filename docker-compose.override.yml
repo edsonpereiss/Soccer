@@ -3,9 +3,7 @@ version: '3.4'
 services:
   soccerDb:
     container_name: soccerDb
-    environment:
-      ME_CONFIG_BASICAUTH_USERNAME: soccer
-      ME_CONFIG_BASICAUTH_PASSWORD: Soccer2021!
+    command: [--auth]
     restart: always
     ports: 
         - "27017:27017"
@@ -16,7 +14,8 @@ services:
     container_name: soccerApi
     environment:
         - ASPNETCORE_ENVIRONMENT=Development
-        - "DatabaseSettings:ConnectionString=mongodb://soccerDb:27017"
+        #-  "DatabaseSettings:ConnectionString=mongodb://soccerDb:27017"
+        - "DatabaseSettings:ConnectionString=mongodb://soccer:Mongo2021@soccerDb:27017"
     depends_on: 
       - soccerDb
     ports:
