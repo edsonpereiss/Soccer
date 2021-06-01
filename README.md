@@ -11,7 +11,7 @@
 
 # db.createUser(
 # {
-# user: "sa",
+# user: "root",
 # pwd: passwordPrompt(),
 # roles: [ { role: "userAdminAnyDatabase", db: "admin" }, "readWriteAnyDatabase" ]
 # }

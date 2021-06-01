@@ -4,8 +4,8 @@ services:
   soccerDb:
     container_name: soccerDb
     environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: MgDb2021!
+      ME_CONFIG_BASICAUTH_USERNAME: soccer
+      ME_CONFIG_BASICAUTH_PASSWORD: Soccer2021!
     restart: always
     ports: 
         - "27017:27017"
