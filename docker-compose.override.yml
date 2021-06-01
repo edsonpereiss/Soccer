@@ -3,9 +3,12 @@ version: '3.4'
 services:
   soccerDb:
     container_name: soccerDb
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: MgDb2021!
     restart: always
     ports: 
-        - "26717:27017"
+        - "27017:27017"
     volumes: 
         - mongo_data:/data/db 
 
@@ -13,7 +16,7 @@ services:
     container_name: soccerApi
     environment:
         - ASPNETCORE_ENVIRONMENT=Development
-        - "DatabaseSettings:ConnectionString=mongodb://soccerDb:26717"
+        - "DatabaseSettings:ConnectionString=mongodb://soccerDb:27017"
     depends_on: 
       - soccerDb
     ports:
