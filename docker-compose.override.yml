@@ -9,15 +9,22 @@ services:
         - "27017:27017"
     volumes: 
         - mongo_data:/data/db 
+    networks:
+        - mongo-compose-network
 
   soccerApi:
     container_name: soccerApi
     environment:
         - ASPNETCORE_ENVIRONMENT=Development
         #-  "DatabaseSettings:ConnectionString=mongodb://soccerDb:27017"
-        - "DatabaseSettings:ConnectionString=mongodb://soccer:Mongo2021@soccerDb:27017"
+        - "DatabaseSettings:ConnectionString=mongodb://root:Mongo2021@soccerDb:27017"
     depends_on: 
       - soccerDb
     ports:
       - 5000:5000
+    networks:
+      - mongo-compose-network
 
+networks: 
+    mongo-compose-network:
+      driver: bridge
